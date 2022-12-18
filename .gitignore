@@ -28,6 +28,9 @@ test-driver
 *.o
 *.lo
 *.la
+*.swp
+*.test
+.cvsignore
 .deps
 .libs
 adplug.pc
@@ -53,3 +56,8 @@ test/playertest
 test/playertest.log
 test/stresstest
 test/stresstest.log
+CMakeUserPresets.json
+/out/
+/.vs/
+.vscode/
+
