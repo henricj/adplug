@@ -195,3 +195,7 @@ add_custom_command(
 add_custom_target(adplug_headers DEPENDS ${OUTPUT_HEADERS})
 
 add_dependencies(adplug adplug_headers)
+
+if(TARGET adplug_gitversion)
+  target_link_libraries(adplug PRIVATE "$<BUILD_INTERFACE:adplug_gitversion>")
+endif()
