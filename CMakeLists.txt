@@ -2,11 +2,20 @@ cmake_minimum_required(VERSION 3.16..3.25)
 
 list(PREPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
+include(GitVersion)
+
 ###
 ### Project
 ###
 
-project(adplug VERSION 2.3.3)
+gitversion_set_version(ADPLUG_VERSION adplug-)
+
+if(DEFINED ADPLUG_VERSION)
+  project(adplug VERSION ${ADPLUG_VERSION})
+  message(STATUS "adplug version: ${ADPLUG_VERSION}")
+else()
+  project(adplug)
+endif()
 
 if(CMAKE_VERSION VERSION_LESS 3.21)
   # Set "top level" if the current CMake is too old to do so in project().
@@ -75,6 +84,10 @@ check_cxx_symbol_exists(strcasecmp "strings.h" HAVE_STRCASECMP)
 ###
 ### Core
 ###
+
+if(COMMAND gitversion_create_target)
+  gitversion_create_target(adplug_gitversion)
+endif()
 
 add_subdirectory(doc)
 add_subdirectory(src)
