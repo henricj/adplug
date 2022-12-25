@@ -29,6 +29,11 @@ endif()
 
 add_compile_definitions($<$<CONFIG:Debug>:DEBUG>)
 
+option(ADPLUG_PRECOMPILED_HEADERS "Use precompiled headers" ON)
+if(ADPLUG_PRECOMPILED_HEADERS)
+    message(STATUS "Enabling precompiled headers")
+endif()
+
 if(MSVC)
   # Tell MSVC to use UTF-8 when reading the source code and when generating the
   # object file.  Otherwise, both the compiler's input and output can vary
