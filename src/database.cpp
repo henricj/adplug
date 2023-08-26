@@ -318,9 +318,8 @@ CAdPlugDatabase::CKey::CKey(binistream &buf)
   make(buf);
 }
 
-bool CAdPlugDatabase::CKey::operator==(const CKey &key)
-{
-  return ((crc16 == key.crc16) && (crc32 == key.crc32));
+bool operator==(const CAdPlugDatabase::CKey& a, const CAdPlugDatabase::CKey& b) {
+  return ((a.crc16 == b.crc16) && (a.crc32 == b.crc32));
 }
 
 void CAdPlugDatabase::CKey::make(binistream &buf)

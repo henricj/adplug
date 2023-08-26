@@ -40,7 +40,7 @@ public:
     CKey() {};
     CKey(binistream &in);
 
-    bool operator==(const CKey &key);
+    friend bool operator==(const CKey& a, const CKey &b);
 
   private:
     void make(binistream &in);
